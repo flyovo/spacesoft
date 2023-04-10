@@ -6,14 +6,12 @@ module.exports = {
     node: true
   },
   extends: [
-    'airbnb',
     'react-app',
     'prettier',
     'plugin:import/errors',
     'plugin:import/warnings',
     'plugin:import/typescript',
     'plugin:react/recommended',
-    'plugin:react-redux/recommended',
     'plugin:react-hooks/recommended',
     'plugin:jsx-a11y/recommended'
   ],
@@ -141,11 +139,6 @@ module.exports = {
 
     // React Hooks
     'react-hooks/exhaustive-deps': 'warn',
-
-    // Redux
-    'react-redux/connect-prefer-named-arguments': 'warn',
-    'react-redux/mapDispatchToProps-prefer-shorthand': 'warn',
-    'react-redux/no-unused-prop-types': 'warn',
 
     // jsx-a11y
     'jsx-a11y/alt-text': 'warn',
