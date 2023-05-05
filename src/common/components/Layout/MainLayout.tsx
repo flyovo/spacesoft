@@ -39,7 +39,8 @@ export default function MainLayout({ children }: Props) {
                 background: 'transparent',
                 color: '#f0f4fc',
                 borderBottom: 'unset',
-                fontSize: '15px'
+                fontSize: '15px',
+                marginLeft: '34px'
               }}
               items={headerMenu}
             />

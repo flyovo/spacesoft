@@ -47,9 +47,19 @@ export const MainContainer = styled.div`
       border-bottom-width: 0;
     }
   }
+
   .ant-menu-item-selected {
     color: #2d3038;
     background-color: transparent;
+  }
+
+  .ant-layout-sider {
+    .ant-menu-light .ant-menu-submenu-selected > .ant-menu-submenu-title {
+      color: #2d3038;
+    }
+    .ant-menu-sub {
+      background: #fcfdff !important;
+    }
   }
 `
 
