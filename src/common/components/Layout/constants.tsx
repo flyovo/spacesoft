@@ -20,7 +20,8 @@ type MenuItem = Required<MenuProps>['items'][number]
 
 function getItem(
   key: React.Key,
-  label: React.ReactNode,
+  // label: React.ReactNode,
+  label: string,
   icon?: React.ReactNode,
   children?: MenuItem[],
   type?: 'group'
@@ -35,11 +36,11 @@ function getItem(
 }
 
 export const headerMenu: MenuProps['items'] = [
-  getItem(1, `기기관리`),
+  getItem('device-management', `기기관리`),
   { key: 2, type: 'divider' },
-  getItem(3, `자동 종료 설정`),
+  getItem('auto-shutdown-settings', `자동 종료 설정`),
   { key: 4, type: 'divider' },
-  getItem(5, `사용자 계정 관리`)
+  getItem('managing-accounts', `사용자 계정 관리`)
 ]
 
 export const navMenu: MenuProps['items'] = [

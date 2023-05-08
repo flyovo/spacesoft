@@ -2,9 +2,13 @@ import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 import LayoutTemplate from '../common/components/Layout'
 import { useAccessToken } from '../common/store/securityStore'
-import { DashboardForm } from '../features/home/components'
+import { DeviceManagement } from '../features/headerNav/DeviceManagement'
 
-export default function Home({ previousRoute }: { previousRoute: any }) {
+export default function HeaderDeviceManagement({
+  previousRoute
+}: {
+  previousRoute: any
+}) {
   const accessToken = useAccessToken()
   const router = useRouter()
 
@@ -18,7 +22,7 @@ export default function Home({ previousRoute }: { previousRoute: any }) {
 
   return (
     <LayoutTemplate>
-      <DashboardForm previousRoute={''} />
+      <DeviceManagement previousRoute={''} />
     </LayoutTemplate>
   )
 }

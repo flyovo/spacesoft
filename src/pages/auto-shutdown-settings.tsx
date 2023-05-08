@@ -4,7 +4,11 @@ import LayoutTemplate from '../common/components/Layout'
 import { useAccessToken } from '../common/store/securityStore'
 import { DashboardForm } from '../features/home/components'
 
-export default function Home({ previousRoute }: { previousRoute: any }) {
+export default function HeaderAutoShutdownSettings({
+  previousRoute
+}: {
+  previousRoute: any
+}) {
   const accessToken = useAccessToken()
   const router = useRouter()
 

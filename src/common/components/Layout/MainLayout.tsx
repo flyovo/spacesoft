@@ -1,21 +1,49 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import type { ReactNode } from 'react'
 
-import { Button, Layout, Menu } from 'antd'
+import { Breadcrumb, Button, Layout, Menu } from 'antd'
 import { Logo } from '../Logo'
 import { headerMenu, navMenu } from './constants'
 import { AccountInfo, LoginMenu, MainContainer, MenuWrapper } from './style'
 import { PoweroffOutlined, UserOutlined } from '@ant-design/icons'
+import router from 'next/router'
 
+interface BreadcrumbProp {
+  path: string
+  title: string
+}
 interface Props {
   children: ReactNode
+  nav: string
+  // breadcrumbs: BreadcrumbProp[]
+  pageTitle: BreadcrumbProp[]
 }
 
 const HEADER_HEIGHT = '80px'
 const NAV_WIDTH = '248px'
 
-export default function MainLayout({ children }: Props) {
+export default function MainLayout({ children, nav, pageTitle }: Props) {
   const { Header, Content, Sider } = Layout
+  const [navPosition, setNavPosition] = useState(nav)
+  const [breadcrumbs, setBreadcrumbs] = useState(pageTitle)
+
+  // useEffect(() => {
+  //   if (pageTitle.length === 1) {
+  //     setBreadcrumbs(
+  //       pageTitle?.map((page) => {
+  //         return {
+  //           ...page,
+  //           title: headerMenu?.find((menu) => menu?.key === page.title).label
+  //         }
+  //       })
+  //     )
+  //   }
+  // }, [pageTitle])
+
+  const handleClick = (item: any) => {
+    console.log(item)
+    router.replace(`/${item.key}`)
+  }
 
   return (
     <MainContainer>
@@ -31,7 +59,7 @@ export default function MainLayout({ children }: Props) {
           <MenuWrapper>
             <Menu
               mode="horizontal"
-              defaultSelectedKeys={['0']}
+              defaultSelectedKeys={[nav]}
               style={{
                 display: 'flex',
                 flex: 1,
@@ -42,6 +70,7 @@ export default function MainLayout({ children }: Props) {
                 fontSize: '15px',
                 marginLeft: '34px'
               }}
+              onClick={handleClick}
               items={headerMenu}
             />
             <LoginMenu>
@@ -69,8 +98,8 @@ export default function MainLayout({ children }: Props) {
           <Sider width={NAV_WIDTH}>
             <Menu
               mode="inline"
-              defaultSelectedKeys={['sub1']}
-              defaultOpenKeys={['sub1']}
+              defaultSelectedKeys={[nav]}
+              defaultOpenKeys={[nav]}
               style={{
                 height: '100%',
                 background: '#f0f3f5',
@@ -81,11 +110,17 @@ export default function MainLayout({ children }: Props) {
             />
           </Sider>
           <Layout>
+            {/* <Breadcrumb
+              style={{ margin: '16px 0' }}
+              items={breadcrumbs}
+              separator=">"
+            /> */}
             <Content
               style={{
                 padding: '24px 41px',
                 margin: 0,
-                minHeight: 280
+                minHeight: 280,
+                backgroundColor: '#e8edf0'
               }}>
               {children}
             </Content>

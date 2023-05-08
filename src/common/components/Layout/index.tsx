@@ -17,10 +17,22 @@ export default function LayoutTemplate({ children }: Props) {
 
   const isDynamicRoute = pathname.includes('[') || pathname.includes(']')
 
-  const [, pageTitle] = pathname.split('/')
-  console.log('pageTitle :::', pageTitle)
+  const [, menu, pageTitle] = pathname.split('/')
+  console.log(pathname.split('/'))
+  console.log('pathname :::', menu, pageTitle)
   console.log('isDynamicRoute :::', isDynamicRoute)
   console.log('children :::', children)
 
-  return <MainLayout>{children}</MainLayout>
+  return (
+    <MainLayout
+      nav={pageTitle}
+      pageTitle={[
+        {
+          path: 'index',
+          title: pageTitle
+        }
+      ]}>
+      {children}
+    </MainLayout>
+  )
 }
